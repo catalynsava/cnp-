@@ -1,0 +1,14 @@
+c:\Users\catal\source\repos\cnp#\bin\Debug\net9.0\cnp#.exe
+C:\Users\catal\source\repos\cnp#\bin\Debug\net9.0\cnp#.deps.json
+C:\Users\catal\source\repos\cnp#\bin\Debug\net9.0\cnp#.runtimeconfig.json
+c:\Users\catal\source\repos\cnp#\bin\Debug\net9.0\cnp#.dll
+c:\Users\catal\source\repos\cnp#\bin\Debug\net9.0\cnp#.pdb
+c:\Users\catal\source\repos\cnp#\obj\Debug\net9.0\cnp#.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\catal\source\repos\cnp#\obj\Debug\net9.0\cnp#.AssemblyInfoInputs.cache
+c:\Users\catal\source\repos\cnp#\obj\Debug\net9.0\cnp#.AssemblyInfo.cs
+c:\Users\catal\source\repos\cnp#\obj\Debug\net9.0\cnp#.csproj.CoreCompileInputs.cache
+c:\Users\catal\source\repos\cnp#\obj\Debug\net9.0\cnp#.dll
+c:\Users\catal\source\repos\cnp#\obj\Debug\net9.0\refint\cnp#.dll
+c:\Users\catal\source\repos\cnp#\obj\Debug\net9.0\cnp#.pdb
+C:\Users\catal\source\repos\cnp#\obj\Debug\net9.0\cnp#.genruntimeconfig.cache
+C:\Users\catal\source\repos\cnp#\obj\Debug\net9.0\ref\cnp#.dll
