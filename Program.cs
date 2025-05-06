@@ -7,13 +7,13 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine( verificareCNP("52501") );
+        Console.WriteLine( verificareCNP("9as1103") );
     }
     private static readonly string[] m = {"1", "3", "5", "7"};
     private static readonly string[] f = ["2", "4", "6", "8"];
     public static string verificareCNP(string mCnp){
         string mesajValidare = "";
-         //sex valid
+        //sex valid
         if (mCnp.Length > 0)
         {
             if (int.TryParse( mCnp.Substring(0,1), out _ ))
@@ -54,7 +54,7 @@ class Program
                 }else if (mCnp[0] == '3' || mCnp[0] == '4')
                 {
                     mesajValidare += "18" + mCnp.Substring(1,2);
-                }else if (mCnp[0] == '5' || mCnp[0] == '6')
+                }else if (mCnp[0] == '5' || mCnp[0] == '6' || mCnp[0] == '7' || mCnp[0] == '8')
                 {
                     if ( int.Parse("20" + mCnp.Substring(1,2)) <= DateTime.Now.Year )
                     {
@@ -66,18 +66,18 @@ class Program
                     mesajValidare += "{?an}";
                 }
             }else{
-                mesajValidare += "{an?}";
+                mesajValidare += "{?an}";
             }
         }else{
-                mesajValidare += "{an?}";
+                mesajValidare += "{?an}";
         }
         //--
-         mesajValidare += " ";  
+        mesajValidare += " ";  
         //luna nașterii
         string[] lunileAnului = ["ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie"];
         if ( mCnp.Length > 4 )
         {
-            if ( mCnp.All(Char.IsNumber) ){
+            if ( mCnp.Substring(3,2).All(Char.IsNumber) ){
                  if( int.Parse(mCnp.Substring(3,2)) > 0 && int.Parse(mCnp.Substring(3,2)) < 13 ){
                     mesajValidare += lunileAnului[int.Parse(mCnp.Substring(3,2))-1];
                  }else{
@@ -89,7 +89,20 @@ class Program
         } else {
             mesajValidare += "{?luna}";
         }
-         
+        //--
+        mesajValidare += " ";
+        // ziua nașterii
+        if (mCnp.Length > 6)
+        {
+            if ( mCnp.Substring(5,2).All(Char.IsNumber) )
+            {
+                mesajValidare += mCnp.Substring(5,2);
+            }else{
+                mesajValidare += "{?zi}";
+            }
+        }else{
+            mesajValidare += "{?zi}";
+        }
         
         
 
