@@ -7,7 +7,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine( verificareCNP("1761103") );
+        Console.WriteLine( verificareCNP(args[0]) );
     }
     
     public static string verificareCNP(string mCnp){
@@ -121,7 +121,7 @@ class Program
                 }else if( mCnp.Substring(0,1) == "5" || mCnp.Substring(0,1) == "6" || mCnp.Substring(0,1) == "7" || mCnp.Substring(0,1) == "8" ){
                     tmpAn = "20" + mCnp.Substring(1,2);
                 }else{
-                    tmpAn = "0000";
+                    tmpAn = "";
                 }
                 tmpLuna = mCnp.Substring(3,2);
                 tmpZi = mCnp.Substring(5,2);
@@ -135,6 +135,57 @@ class Program
             }
         }else{
             mesajValidare += "{?data}";
+        }
+        //--
+        //mesajValidare += " ";
+        // judet
+        string[] judete = ["Alba", "Arad", "Argeș", "Bacău", "Bihor", "Bistrița-Năsăud", "Botoșani", "Brașov", "Brăila", "Buzău", "Caraș-Severin", "Cluj", "Constanța", "Covasna", "Dâmbovița", "Dolj", "Galați", "Gorj", "Harghita", "Hunedoara", "Ialomița", "Iași", "Ilfov", "Maramureș", "Mehedinți", "Mureș", "Neamț", "Olt", "Prahova", "Satu Mare", "Sălaj", "Sibiu", "Suceava", "Teleorman", "Timiș", "Tulcea", "Vaslui", "Vâlcea", "Vrancea", "București", "București - Sector 1", "București - Sector 2", "București - Sector 3", "București - Sector 4", "București - Sector 5", "București - Sector 6", "Călărași", "Giurgiu", "Bucuresti - Sector 7 (desființat)", "Bucuresti - Sector 8 (desființat)"];
+        if (mCnp.Length > 8)
+        {
+            if ( mCnp.Substring(7,2).All(Char.IsNumber) )
+            {
+                if ( int.Parse(mCnp.Substring(7,2)) <= 50 )
+                {
+                    mesajValidare += judete[int.Parse(mCnp.Substring(7,2))-1];
+                }else
+                {
+                    mesajValidare += "{?județ}";
+                }
+            }else{
+                mesajValidare += "{?județ}";
+            }
+        }else
+        {
+            mesajValidare += "{?județ}";
+        }
+        //--
+        mesajValidare += " ";
+        //cifra control
+        int[] control = { 2, 7, 9, 1, 4, 6, 3, 5, 8, 2, 7, 9 };
+        int suma = 0;
+
+        if (mCnp.Length > 11)
+        {
+            for (int i = 0; i < 12; i++)
+            {
+                suma += (mCnp[i] - '0') * control[i];
+            }
+            int rest = suma % 11;
+            int cifraControl = rest == 10 ? 1 : rest;
+            if ( mCnp.Length > 12 )
+            {
+                if (int.Parse(mCnp.Substring(13,1)) != cifraControl)
+                {
+                    mesajValidare += mCnp.Substring(13,1) + "->" + cifraControl;
+                }else{
+                    mesajValidare += "{valid}";
+                }
+            }else{
+                mesajValidare += mCnp + "?" + "->" + cifraControl;
+            }
+            
+        }else{
+            mesajValidare += "{?cifra.control}";
         }
         return mesajValidare;
     }
