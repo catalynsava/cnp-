@@ -174,9 +174,9 @@ class Program
             int cifraControl = rest == 10 ? 1 : rest;
             if ( mCnp.Length > 12 )
             {
-                if (int.Parse(mCnp.Substring(13,1)) != cifraControl)
+                if (int.Parse(mCnp.Substring(12,1)) != cifraControl)
                 {
-                    mesajValidare += mCnp.Substring(13,1) + "->" + cifraControl;
+                    mesajValidare += mCnp.Substring(12,1) + "->" + cifraControl;
                 }else{
                     mesajValidare += "{valid}";
                 }
