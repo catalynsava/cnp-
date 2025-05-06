@@ -12,3 +12,4 @@ c:\Users\catal\source\repos\cnp#\obj\Debug\net9.0\refint\cnp#.dll
 c:\Users\catal\source\repos\cnp#\obj\Debug\net9.0\cnp#.pdb
 C:\Users\catal\source\repos\cnp#\obj\Debug\net9.0\cnp#.genruntimeconfig.cache
 C:\Users\catal\source\repos\cnp#\obj\Debug\net9.0\ref\cnp#.dll
+c:\Users\catal\source\repos\cnp#\obj\Debug\net9.0\cnp#.sourcelink.json
