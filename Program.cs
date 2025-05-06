@@ -7,11 +7,12 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine( verificareCNP("9as1103") );
+        Console.WriteLine( verificareCNP("1761103") );
     }
-    private static readonly string[] m = {"1", "3", "5", "7"};
-    private static readonly string[] f = ["2", "4", "6", "8"];
+    
     public static string verificareCNP(string mCnp){
+        string[] m = {"1", "3", "5", "7"};
+        string[] f = ["2", "4", "6", "8"];
         string mesajValidare = "";
         //sex valid
         if (mCnp.Length > 0)
@@ -44,7 +45,7 @@ class Program
         }
         //--
         mesajValidare += " ";
-        // anul nașterii
+        // extrage anul nașterii
         if (mCnp.Length > 2)
         {
             if ( mCnp.All(Char.IsNumber) )
@@ -73,7 +74,7 @@ class Program
         }
         //--
         mesajValidare += " ";  
-        //luna nașterii
+        //extrage luna nașterii
         string[] lunileAnului = ["ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie"];
         if ( mCnp.Length > 4 )
         {
@@ -91,7 +92,7 @@ class Program
         }
         //--
         mesajValidare += " ";
-        // ziua nașterii
+        // extrage ziua nașterii
         if (mCnp.Length > 6)
         {
             if ( mCnp.Substring(5,2).All(Char.IsNumber) )
@@ -103,9 +104,38 @@ class Program
         }else{
             mesajValidare += "{?zi}";
         }
-        
-        
-
+        //--
+        mesajValidare += " ";
+        // data nasterii validă
+        string tmpAn;
+        string tmpLuna;
+        string tmpZi;
+        if (mCnp.Length > 6)
+        {
+            if (mCnp.All(Char.IsNumber))
+            {
+                if( mCnp.Substring(0,1) == "1" || mCnp.Substring(0,1) == "2" ){
+                    tmpAn = "19" + mCnp.Substring(1,2);
+                }else if( mCnp.Substring(0,1) == "3" || mCnp.Substring(0,1) == "4" ){
+                    tmpAn = "18" + mCnp.Substring(1,2);
+                }else if( mCnp.Substring(0,1) == "5" || mCnp.Substring(0,1) == "6" || mCnp.Substring(0,1) == "7" || mCnp.Substring(0,1) == "8" ){
+                    tmpAn = "20" + mCnp.Substring(1,2);
+                }else{
+                    tmpAn = "0000";
+                }
+                tmpLuna = mCnp.Substring(3,2);
+                tmpZi = mCnp.Substring(5,2);
+                if( DateTime.TryParse(tmpAn + "-" + tmpLuna + "-" + tmpZi, out _) ){
+                    mesajValidare += "";
+                }else{
+                    mesajValidare += "{?data}";
+                }
+            }else{
+                mesajValidare += "{?data}";
+            }
+        }else{
+            mesajValidare += "{?data}";
+        }
         return mesajValidare;
     }
 }
